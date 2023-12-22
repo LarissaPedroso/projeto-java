@@ -22,11 +22,12 @@ public class Cart implements Repository{
 		for(int i = 0; i < books.size(); i++) {
 			sum += books.get(i).getPrice();
 		}
-		System.out.println("O valor total: " + sum);
+		System.out.println("\nO valor total: " + sum);
 	}
 	public void show() {
+		System.out.println("\nLivros no carrinho: \n");
 		for( Books book : books ) {
-			System.out.println("Livros no carrinho: \n" + book.getBookName());
+			System.out.println(book.getBookName());
 		}
 	}
 

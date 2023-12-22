@@ -38,7 +38,7 @@ public class Menu {
 		System.out.println(Colors.TEXT_RESET);
 		try {
 		do {
-			System.out.println("Sua escolha: ");
+			System.out.println("\nSua escolha: ");
 			option = read.nextInt();
 			if(option == 1) {
 				System.out.println("Digite o código do livro desejado: ");
@@ -61,7 +61,7 @@ public class Menu {
 			else if(option == 3){
 				System.out.println("BookPlace agradece!");
 			}
-		}while(option == 1);
+		}while(option != 3);
 		}catch(InputMismatchException e) {
 			System.err.println("\nExceção: " + e);
 			read.nextLine();
