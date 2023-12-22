@@ -1,6 +1,6 @@
 package bookstore.util;
 
-public class Cores {
+public abstract class Colors {
 	
 	public static final String TEXT_RESET = "\u001B[0m";
 
