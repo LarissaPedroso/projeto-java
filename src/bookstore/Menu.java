@@ -1,4 +1,5 @@
 package bookstore;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import bookstore.books.Books;
@@ -20,22 +21,23 @@ public class Menu {
 		int cod;
 		Scanner read = new Scanner(System.in);
 		
+		System.out.println(Colors.TEXT_YELLOW_BOLD);
+		System.out.println("***********************************");
+		System.out.println("             BookPlace            ");
+		System.out.println("***********************************\n");
+		System.out.println("Livros:");
+		b1.view();
+		System.out.println("\n");
+		b2.view();
+		System.out.println("\n***********************************");
+		System.out.println("Digite: ");
+		System.out.println("1 - Adicionar ao carrinho");
+		System.out.println("2 - Ver carrinho");
+		System.out.println("3 - Sair");
+		System.out.println("\n***********************************");
+		System.out.println(Colors.TEXT_RESET);
+		try {
 		do {
-			System.out.println(Colors.TEXT_YELLOW_BOLD);
-			System.out.println("***********************************");
-			System.out.println("             BookPlace            ");
-			System.out.println("***********************************\n");
-			System.out.println("Livros:");
-			b1.view();
-			System.out.println("\n");
-			b2.view();
-			System.out.println("\n***********************************");
-			System.out.println("Digite: ");
-			System.out.println("1 - Adicionar ao carrinho");
-			System.out.println("2 - Ver carrinho");
-			System.out.println("3 - Sair");
-			System.out.println("\n***********************************");
-			System.out.println(Colors.TEXT_RESET);
 			System.out.println("Sua escolha: ");
 			option = read.nextInt();
 			if(option == 1) {
@@ -45,20 +47,27 @@ public class Menu {
 					System.out.println("Livro: " + b1.getBookName() + " - " + b1.getBookAuthor());
 					System.out.println("Preço: " + b1.getPrice());
 					c1.addToCart(b1);
-				}else if(cod == b2.getCod()){
+				}
+				if(cod == b2.getCod()){
 					System.out.println("Livro: " + b2.getBookName() + " - " + b2.getBookAuthor());
 					System.out.println("Preço: " + b2.getPrice());
 					c1.addToCart(b2);
 				}
 			
 			}else if(option == 2){
-				c1.sumTotal(b1.getPrice() + b2.getPrice());
+				c1.show();
+				c1.sumTotal();;
 			}
-			else {
+			else if(option == 3){
 				System.out.println("BookPlace agradece!");
 			}
 		}while(option == 1);
+		}catch(InputMismatchException e) {
+			System.err.println("\nExceção: " + e);
+			read.nextLine();
+			System.out.println("Digite números!");
 		read.close();
+		}
 	}
-}	
+}
 

@@ -15,13 +15,18 @@ public class Cart implements Repository{
 
 	@Override
 	public void deleteToCart(Books cod) {
-		
+		books.remove(0);
 	}
 	
-	public void sumTotal(float finalPrice) {
+	public void sumTotal() {
 		for(int i = 0; i < books.size(); i++) {
-			//sum += books[i];
-			System.out.println("O valor total: ");
+			sum += books.get(i).getPrice();
+		}
+		System.out.println("O valor total: " + sum);
+	}
+	public void show() {
+		for( Books book : books ) {
+			System.out.println("Livros no carrinho: \n" + book.getBookName());
 		}
 	}
 
