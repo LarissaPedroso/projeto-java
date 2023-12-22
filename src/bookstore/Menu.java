@@ -2,6 +2,7 @@ package bookstore;
 import java.util.Scanner;
 
 import bookstore.books.Books;
+import bookstore.cart.Cart;
 import bookstore.util.Colors;
 
 public class Menu {
@@ -13,6 +14,7 @@ public class Menu {
 	
 		Books b1 = new Books(1, "Hunger Games", "Suzanne Collins", 50.0f);
 		Books b2 = new Books(2, "1984", "George Orwell", 60.0f);
+		Cart c1 = new Cart();
 		
 		int option;
 		int cod;
@@ -23,9 +25,15 @@ public class Menu {
 			System.out.println("***********************************");
 			System.out.println("             BookPlace            ");
 			System.out.println("***********************************\n");
+			System.out.println("Livros:");
+			b1.view();
+			System.out.println("\n");
+			b2.view();
+			System.out.println("\n***********************************");
 			System.out.println("Digite: ");
 			System.out.println("1 - Adicionar ao carrinho");
-			System.out.println("2 - Sair");
+			System.out.println("2 - Ver carrinho");
+			System.out.println("3 - Sair");
 			System.out.println("\n***********************************");
 			System.out.println(Colors.TEXT_RESET);
 			System.out.println("Sua escolha: ");
@@ -36,16 +44,21 @@ public class Menu {
 				if(cod == b1.getCod()){
 					System.out.println("Livro: " + b1.getBookName() + " - " + b1.getBookAuthor());
 					System.out.println("Preço: " + b1.getPrice());
+					c1.addToCart(b1);
 				}else if(cod == b2.getCod()){
 					System.out.println("Livro: " + b2.getBookName() + " - " + b2.getBookAuthor());
 					System.out.println("Preço: " + b2.getPrice());
+					c1.addToCart(b2);
 				}
-			}else {
+			
+			}else if(option == 2){
+				c1.sumTotal(b1.getPrice() + b2.getPrice());
+			}
+			else {
 				System.out.println("BookPlace agradece!");
 			}
 		}while(option == 1);
 		read.close();
-		
 	}
 }	
 

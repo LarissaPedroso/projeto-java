@@ -1,28 +1,28 @@
 package bookstore.cart;
+import java.util.ArrayList;
+
 import bookstore.books.Books;
 import bookstore.repository.Repository;
 
-public class Cart extends Books implements Repository{
+public class Cart implements Repository{
+	float sum = 0;
 
-
-	public Cart(int cod, String bookName, String bookAuthor, float price) {
-		super(cod, bookName, bookAuthor, price);
-		// TODO Auto-generated constructor stub
-	}
-
-	//private ArrayList<Books> books = new ArrayList<Books>();
+	private ArrayList<Books> books = new ArrayList<Books>();
 	@Override
 	public void addToCart(Books cod) {
-		
+		books.add(cod);
 	}
 
 	@Override
 	public void deleteToCart(Books cod) {
-		// TODO Auto-generated method stub
 		
 	}
 	
-	public void sumTotal() {
+	public void sumTotal(float finalPrice) {
+		for(int i = 0; i < books.size(); i++) {
+			//sum += books[i];
+			System.out.println("O valor total: ");
+		}
 	}
 
 	
